@@ -224,17 +224,17 @@ param_svr ={
 gpred_svr, label_list_svr = FitModel(x_train,y_train,'SVR',SVR(),param_svr,cv=5)
 
 # Gradient Boosting
-
 param_gb ={
             'max_depth':[2,3,4,5]
         }
 gpred_gb, label_list_gb = FitModel(x_train,y_train,'GradientBoostingRegressor',GradientBoostingRegressor(),param_gb,cv=5)
 
-
+# XGBoost
 param_xgb ={
-            'max_depth':[2,3,4,5]
+            'n_estimators': [100,500, 1000,1500],
+            'max_depth':[2,4,6,8]
         }
-gpred_xgb, label_list_xgb = FitModel(x_train,y_train,'XGBRegressor',XGBRegressor(),param_gb,cv=5)
+gpred_xgb, label_list_xgb = FitModel(x_train,y_train,'XGBRegressor',XGBRegressor(),param_xgb,cv=5)
 
 
 gpred = gpred_svr
